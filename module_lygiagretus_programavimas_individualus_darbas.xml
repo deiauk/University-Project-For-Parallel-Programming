@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_lygiagretus_programavimas_individualus_darbas" default="compile.module.lygiagretus_programavimas_individualus_darbas">
+  <dirname property="module.lygiagretus_programavimas_individualus_darbas.basedir" file="${ant.file.module_lygiagretus_programavimas_individualus_darbas}"/>
+  
+  <property name="module.jdk.home.lygiagretus_programavimas_individualus_darbas" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.lygiagretus_programavimas_individualus_darbas" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.lygiagretus_programavimas_individualus_darbas" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.lygiagretus_programavimas_individualus_darbas" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="lygiagretus_programavimas_individualus_darbas.output.dir" value="${module.lygiagretus_programavimas_individualus_darbas.basedir}/out/production/Lygiagretus_Programavimas_Individualus_Darbas"/>
+  <property name="lygiagretus_programavimas_individualus_darbas.testoutput.dir" value="${module.lygiagretus_programavimas_individualus_darbas.basedir}/out/test/Lygiagretus_Programavimas_Individualus_Darbas"/>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.module.production.classpath">
+    <path refid="${module.jdk.classpath.lygiagretus_programavimas_individualus_darbas}"/>
+  </path>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.runtime.production.module.classpath">
+    <pathelement location="${lygiagretus_programavimas_individualus_darbas.output.dir}"/>
+  </path>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.module.classpath">
+    <path refid="${module.jdk.classpath.lygiagretus_programavimas_individualus_darbas}"/>
+    <pathelement location="${lygiagretus_programavimas_individualus_darbas.output.dir}"/>
+  </path>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.runtime.module.classpath">
+    <pathelement location="${lygiagretus_programavimas_individualus_darbas.testoutput.dir}"/>
+    <pathelement location="${lygiagretus_programavimas_individualus_darbas.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.lygiagretus_programavimas_individualus_darbas">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.lygiagretus_programavimas_individualus_darbas">
+    <patternset refid="excluded.from.module.lygiagretus_programavimas_individualus_darbas"/>
+  </patternset>
+  
+  <path id="lygiagretus_programavimas_individualus_darbas.module.sourcepath">
+    <dirset dir="${module.lygiagretus_programavimas_individualus_darbas.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.lygiagretus_programavimas_individualus_darbas" depends="compile.module.lygiagretus_programavimas_individualus_darbas.production,compile.module.lygiagretus_programavimas_individualus_darbas.tests" description="Compile module Lygiagretus_Programavimas_Individualus_Darbas"/>
+  
+  <target name="compile.module.lygiagretus_programavimas_individualus_darbas.production" depends="register.custom.compilers" description="Compile module Lygiagretus_Programavimas_Individualus_Darbas; production classes">
+    <mkdir dir="${lygiagretus_programavimas_individualus_darbas.output.dir}"/>
+    <javac2 destdir="${lygiagretus_programavimas_individualus_darbas.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.lygiagretus_programavimas_individualus_darbas}/javac">
+      <compilerarg line="${compiler.args.lygiagretus_programavimas_individualus_darbas}"/>
+      <bootclasspath refid="lygiagretus_programavimas_individualus_darbas.module.bootclasspath"/>
+      <classpath refid="lygiagretus_programavimas_individualus_darbas.module.production.classpath"/>
+      <src refid="lygiagretus_programavimas_individualus_darbas.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.lygiagretus_programavimas_individualus_darbas"/>
+    </javac2>
+    
+    <copy todir="${lygiagretus_programavimas_individualus_darbas.output.dir}">
+      <fileset dir="${module.lygiagretus_programavimas_individualus_darbas.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.lygiagretus_programavimas_individualus_darbas.tests" depends="register.custom.compilers,compile.module.lygiagretus_programavimas_individualus_darbas.production" description="compile module Lygiagretus_Programavimas_Individualus_Darbas; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.lygiagretus_programavimas_individualus_darbas" description="cleanup module">
+    <delete dir="${lygiagretus_programavimas_individualus_darbas.output.dir}"/>
+    <delete dir="${lygiagretus_programavimas_individualus_darbas.testoutput.dir}"/>
+  </target>
+</project>

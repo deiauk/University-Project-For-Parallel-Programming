@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Lygiagretus_Programavimas_Individualus_Darbas:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lygiagretus_Programavimas_Individualus_Darbas_jar</output-path>
+    <root id="archive" name="Lygiagretus_Programavimas_Individualus_Darbas.jar">
+      <element id="module-output" name="Lygiagretus_Programavimas_Individualus_Darbas" />
+    </root>
+  </artifact>
+</component>
